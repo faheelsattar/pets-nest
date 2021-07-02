@@ -8,12 +8,12 @@ export class PetController {
   constructor(private readonly petService: PetService) {}
   @Get('/pets')
   getPets(@Res() res: Response) {
-    this.petService.getPets();
+    return this.petService.getPets();
   }
 
   @Post('/add-pets')
   addPet(@Body() createPetDto: CreatePetDto) {
-    this.petService.addPet(createPetDto);
+    return this.petService.addPet(createPetDto);
   }
 
   @Put('/update-pets/:id')
@@ -22,6 +22,6 @@ export class PetController {
     @Body() createPetDto: CreatePetDto,
     res: Response,
   ) {
-    this.petService.updatePet(petId, createPetDto);
+    return this.petService.updatePet(petId, createPetDto);
   }
 }
