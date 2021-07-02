@@ -7,21 +7,21 @@ import { Response } from 'express';
 export class PetController {
   constructor(private readonly petService: PetService) {}
   @Get('/pets')
-  getPets(@Res() res: Response) {
-    return this.petService.getPets();
+  async getPets(@Res() res: Response) {
+    return await this.petService.getPets();
   }
 
   @Post('/add-pets')
-  addPet(@Body() createPetDto: CreatePetDto) {
-    return this.petService.addPet(createPetDto);
+  async addPet(@Body() createPetDto: CreatePetDto) {
+    return await this.petService.addPet(createPetDto);
   }
 
   @Put('/update-pets/:id')
-  updatePet(
+  async updatePet(
     @Param('id') petId: string,
     @Body() createPetDto: CreatePetDto,
     res: Response,
   ) {
-    return this.petService.updatePet(petId, createPetDto);
+    return await this.petService.updatePet(petId, createPetDto);
   }
 }
